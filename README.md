@@ -42,16 +42,16 @@
 
 以下是按學習目的挑選的入口。挑選順序代表建議路線；完整清單還有更多替代方案。
 
-1. **[Microsoft AI Agents for Beginners](https://github.com/microsoft/ai-agents-for-beginners)** — 建立 Agent 全貌。**第一步：**挑一個 Tool Use 範例，記錄模型輸入、工具參數與回傳結果。
-2. **[Hugging Face Agents Course](https://github.com/huggingface/agents-course)** — 按單元理解 Agent、框架與評測。**第一步：**完成入門單元，寫下 Agent 與固定工作流的差別。
-3. **[smolagents](https://github.com/huggingface/smolagents)** — 從精簡的程式碼理解 Code Agent。**第一步：**跑通範例，再加一個自己的工具。
-4. **[LangGraph](https://github.com/langchain-ai/langgraph)** — 學習狀態、持久執行與人工介入。**第一步：**做出可暫停、檢查狀態、再繼續的工作流。
-5. **[CrewAI](https://github.com/crewAIInc/crewAI)** — 理解角色分工的 Crews 與事件驅動的 Flows。**第一步：**用「研究 → 撰寫」兩個角色，測試交接資料是否足夠。
-6. **[Pydantic AI](https://github.com/pydantic/pydantic-ai)** — 將型別與結構化輸出接入 Agent。**第一步：**為任務結果定義資料結構，檢查缺欄位與錯誤型別如何處理。
-7. **[MCP Inspector](https://github.com/modelcontextprotocol/inspector)** — 獨立檢查 MCP Server 的工具與回應。**第一步：**連接一個範例 Server，列出工具並完成一次呼叫。
-8. **[Browser Use](https://github.com/browser-use/browser-use)** — 探索瀏覽器任務的執行流程。**第一步：**讓 Agent 在測試頁擷取資訊，留下可檢查的結果。
-9. **[Langfuse](https://github.com/langfuse/langfuse)** — 追蹤、評估與除錯 LLM 應用。**第一步：**記錄同一個任務的工具路徑、延遲與成本。
-10. **[Dify](https://github.com/langgenius/dify)** — 透過視覺化工作流與 RAG 快速做原型。**第一步：**建立自己的文件問答流程，用具體問題驗證回答品質。
+1. **[Microsoft AI Agents for Beginners](https://github.com/microsoft/ai-agents-for-beginners)** — 建立 Agent 全貌。**第一步：** 挑一個 Tool Use 範例，記錄模型輸入、工具參數與回傳結果。
+2. **[Hugging Face Agents Course](https://github.com/huggingface/agents-course)** — 按單元理解 Agent、框架與評測。**第一步：** 完成入門單元，寫下 Agent 與固定工作流的差別。
+3. **[smolagents](https://github.com/huggingface/smolagents)** — 從精簡的程式碼理解 Code Agent。**第一步：** 跑通範例，再加一個自己的工具。
+4. **[LangGraph](https://github.com/langchain-ai/langgraph)** — 學習狀態、持久執行與人工介入。**第一步：** 做出可暫停、檢查狀態、再繼續的工作流。
+5. **[CrewAI](https://github.com/crewAIInc/crewAI)** — 理解角色分工的 Crews 與事件驅動的 Flows。**第一步：** 用「研究 → 撰寫」兩個角色，測試交接資料是否足夠。
+6. **[Pydantic AI](https://github.com/pydantic/pydantic-ai)** — 將型別與結構化輸出接入 Agent。**第一步：** 為任務結果定義資料結構，檢查缺欄位與錯誤型別如何處理。
+7. **[MCP Inspector](https://github.com/modelcontextprotocol/inspector)** — 獨立檢查 MCP Server 的工具與回應。**第一步：** 連接一個範例 Server，列出工具並完成一次呼叫。
+8. **[Browser Use](https://github.com/browser-use/browser-use)** — 探索瀏覽器任務的執行流程。**第一步：** 讓 Agent 在測試頁擷取資訊，留下可檢查的結果。
+9. **[Langfuse](https://github.com/langfuse/langfuse)** — 追蹤、評估與除錯 LLM 應用。**第一步：** 記錄同一個任務的工具路徑、延遲與成本。
+10. **[Dify](https://github.com/langgenius/dify)** — 透過視覺化工作流與 RAG 快速做原型。**第一步：** 建立自己的文件問答流程，用具體問題驗證回答品質。
 
 <a id="mental-model"></a>
 ## 🧠 先看懂一次 Agent Loop
@@ -70,12 +70,12 @@ flowchart LR
 
 讀程式碼時，優先找這六件事：
 
-- **Loop：**下一步在哪裡決定？什麼條件會停止？
-- **Tools：**參數如何驗證？工具失敗如何回報？
-- **State：**哪些資料需要跨步驟保存？中斷後如何恢復？
-- **Context：**模型每一步看得到什麼？哪些資料會被移出視窗？
-- **Memory：**哪些資訊值得長期保留？如何更新與取回？
-- **Evaluation：**成功如何定義？修改後如何確認有進步？
+- **Loop：** 下一步在哪裡決定？什麼條件會停止？
+- **Tools：** 參數如何驗證？工具失敗如何回報？
+- **State：** 哪些資料需要跨步驟保存？中斷後如何恢復？
+- **Context：** 模型每一步看得到什麼？哪些資料會被移出視窗？
+- **Memory：** 哪些資訊值得長期保留？如何更新與取回？
+- **Evaluation：** 成功如何定義？修改後如何確認有進步？
 
 **Workflow** 通常由程式預先指定執行路徑；**Agent** 則讓模型決定部分後續步驟。實際產品可以混合兩者。**MCP** 處理工具與上下文的接入方式；**RAG** 把相關資料找回來；**Skills** 封裝可按需載入的任務方法。先理解它們各自處理的問題，再決定要加哪一層。
 
@@ -86,63 +86,63 @@ flowchart LR
 
 ### Week 1｜跑通最小 Agent
 
-**閱讀：**[Microsoft 入門課程](https://github.com/microsoft/ai-agents-for-beginners)／[Hugging Face 課程](https://github.com/huggingface/agents-course)、[smolagents](https://github.com/huggingface/smolagents)。
+**閱讀：** [Microsoft 入門課程](https://github.com/microsoft/ai-agents-for-beginners)／[Hugging Face 課程](https://github.com/huggingface/agents-course)、[smolagents](https://github.com/huggingface/smolagents)。
 
 - [ ] 跑通一個上游範例，記錄模型與套件版本。
 - [ ] 加入一個簡單工具，例如讀取本機測試資料。
 - [ ] 觀察一次成功與一次工具失敗的完整過程。
 - [ ] 設定停止條件與最大步數。
 
-**本週成果：**一份能解釋「模型如何選工具、拿到什麼結果、為什麼停止」的執行紀錄。
+**本週成果：** 一份能解釋「模型如何選工具、拿到什麼結果、為什麼停止」的執行紀錄。
 
 ### Week 2｜讓流程可控制、結果可驗證
 
-**閱讀：**[LangGraph](https://github.com/langchain-ai/langgraph) 或 [CrewAI](https://github.com/crewAIInc/crewAI)，搭配 [Pydantic AI](https://github.com/pydantic/pydantic-ai)。
+**閱讀：** [LangGraph](https://github.com/langchain-ai/langgraph) 或 [CrewAI](https://github.com/crewAIInc/crewAI)，搭配 [Pydantic AI](https://github.com/pydantic/pydantic-ai)。
 
 - [ ] 將任務拆成明確步驟，寫下每一步的輸入與輸出。
 - [ ] 為輸出定義 Schema，處理不合格式的結果。
 - [ ] 加入一個人工確認節點，檢查後再繼續。
 - [ ] 重跑工具超時與資料缺漏的案例。
 
-**本週成果：**一個可以檢查中間狀態、說明失敗原因的工作流。
+**本週成果：** 一個可以檢查中間狀態、說明失敗原因的工作流。
 
 ### Week 3｜接工具、接資料，再決定是否需要記憶
 
-**閱讀：**[MCP 參考 Servers](https://github.com/modelcontextprotocol/servers)、[Inspector](https://github.com/modelcontextprotocol/inspector)，再從 [LlamaIndex](https://github.com/run-llama/llama_index)、[Haystack](https://github.com/deepset-ai/haystack)、[Mem0](https://github.com/mem0ai/mem0) 選需要的元件。
+**閱讀：** [MCP 參考 Servers](https://github.com/modelcontextprotocol/servers)、[Inspector](https://github.com/modelcontextprotocol/inspector)，再從 [LlamaIndex](https://github.com/run-llama/llama_index)、[Haystack](https://github.com/deepset-ai/haystack)、[Mem0](https://github.com/mem0ai/mem0) 選需要的元件。
 
 - [ ] 測試一個 MCP 工具，確認參數與回應格式。
 - [ ] 為測試文件建立問答流程，讓答案能對照來源。
 - [ ] 準備資料裡找不到答案的問題，觀察如何回應。
 - [ ] 若任務需要跨次對話保留資訊，再加入記憶並測試更新。
 
-**本週成果：**一個使用自己的資料、能展示來源或工具結果的助手。
+**本週成果：** 一個使用自己的資料、能展示來源或工具結果的助手。
 
 ### Week 4｜評測、展示、交付
 
-**閱讀：**[Langfuse](https://github.com/langfuse/langfuse) 或 [Phoenix](https://github.com/Arize-ai/phoenix)。應用方向可參考 [Dify](https://github.com/langgenius/dify)、[STORM](https://github.com/stanford-oval/storm)、[Browser Use](https://github.com/browser-use/browser-use)。
+**閱讀：** [Langfuse](https://github.com/langfuse/langfuse) 或 [Phoenix](https://github.com/Arize-ai/phoenix)。應用方向可參考 [Dify](https://github.com/langgenius/dify)、[STORM](https://github.com/stanford-oval/storm)、[Browser Use](https://github.com/browser-use/browser-use)。
 
 - [ ] 建立至少 10 個固定案例，包含正常、缺資料與工具失敗情況。
 - [ ] 比較成功率、延遲、工具呼叫次數與成本。
 - [ ] 修改一個設計選擇，再用同一組案例重跑。
 - [ ] 錄製 Demo，寫下啟動方式、使用情境與目前限制。
 
-**本週成果：**一個有 Demo、評測紀錄與使用說明的 Agent 作品。
+**本週成果：** 一個有 Demo、評測紀錄與使用說明的 Agent 作品。
 
-> **驗收標準：**另一位開發者能照你的說明跑起來，並用相同案例重現結果。
+> **驗收標準：** 另一位開發者能照你的說明跑起來，並用相同案例重現結果。
 
 <a id="catalog"></a>
 ## 📚 完整資源庫
 
 以下按學習目的分成六類，合計 **172 個不同 Repo**，另列一個前端設計 Skill 的檔案入口。分類順序從核心到應用；同類工具可選一個深入。每個項目提供直接來源與一句用途，點開分類即可探索。
 
-**導覽：**[① 原理](#foundations) · [② 框架](#frameworks) · [③ 工具與資料](#context) · [④ 執行環境](#runtime) · [⑤ 評測與開發](#quality) · [⑥ Skills 與應用](#applications)
+**導覽：** [① 原理](#foundations) · [② 框架](#frameworks) · [③ 工具與資料](#context) · [④ 執行環境](#runtime) · [⑤ 評測與開發](#quality) · [⑥ Skills 與應用](#applications)
 
 <a id="foundations"></a>
 ### ① 課程與核心原理
 
 理解模型如何選工具與推進任務，再研究程式化優化及推理方法。
 
-**帶著這個問題讀：**能否找到工具選擇、執行結果回寫與停止條件？
+**帶著這個問題讀：** 能否找到工具選擇、執行結果回寫與停止條件？
 
 <details>
 <summary>展開 11 個資源入口</summary>
@@ -168,7 +168,7 @@ flowchart LR
 
 把單次模型呼叫組成有狀態、可管理的任務流程。
 
-**帶著這個問題讀：**流程中斷後要保存什麼？何時需要多 Agent？
+**帶著這個問題讀：** 流程中斷後要保存什麼？何時需要多 Agent？
 
 <details>
 <summary>展開 23 個資源入口</summary>
@@ -209,7 +209,7 @@ flowchart LR
 
 把工具、資料契約與知識接入 Agent，控制每一步能取得的上下文。
 
-**帶著這個問題讀：**這個問題需要工具、文件檢索，還是跨次互動的記憶？
+**帶著這個問題讀：** 這個問題需要工具、文件檢索，還是跨次互動的記憶？
 
 <details>
 <summary>展開 27 個資源入口</summary>
@@ -260,7 +260,7 @@ flowchart LR
 
 為執行程式、操作網頁與提供模型服務找到合適的 Runtime。
 
-**帶著這個問題讀：**工具實際在哪裡執行？每一步的權限與成本如何設定？
+**帶著這個問題讀：** 工具實際在哪裡執行？每一步的權限與成本如何設定？
 
 <details>
 <summary>展開 27 個資源入口</summary>
@@ -308,7 +308,7 @@ flowchart LR
 
 追蹤 Agent 的行為與結果，並把工具接入日常開發流程。
 
-**帶著這個問題讀：**修改之後，是否能用同一組案例證明結果改善？
+**帶著這個問題讀：** 修改之後，是否能用同一組案例證明結果改善？
 
 <details>
 <summary>展開 27 個資源入口</summary>
@@ -356,7 +356,7 @@ flowchart LR
 
 從可重用的任務方法與完整應用出發，觀察元件如何組合成產品。
 
-**帶著這個問題讀：**這個應用有哪些可拆解、可重用的工作流程？
+**帶著這個問題讀：** 這個應用有哪些可拆解、可重用的工作流程？
 
 <details>
 <summary>展開 58 個資源入口</summary>
@@ -486,11 +486,11 @@ flowchart LR
 <a id="sources"></a>
 ## 📝 來源與維護
 
-- **最近整理：**2026-10-15。
-- **來源：**各項目連結指向專案維護者的 Repo；精選介紹以對應的上游 README 與文件為依據。
-- **狀態：**標註 `Archived` 的專案在本次核對時已封存，可作為歷史實作參考。
-- **授權：**各專案的程式碼、文件與素材依其各自的授權條款使用。
-- **整理者：**[Kevin / kevin801221](https://github.com/kevin801221)。
+- **最近整理：** 2026-10-15。
+- **來源：** 各項目連結指向專案維護者的 Repo；精選介紹以對應的上游 README 與文件為依據。
+- **狀態：** 標註 `Archived` 的專案在本次核對時已封存，可作為歷史實作參考。
+- **授權：** 各專案的程式碼、文件與素材依其各自的授權條款使用。
+- **整理者：** [Kevin / kevin801221](https://github.com/kevin801221)。
 
 感謝所有開源作者、課程製作者與貢獻者。這份地圖的學習入口，來自你們公開分享的知識與實作。
 
